@@ -133,6 +133,17 @@ const generateRTEToken = (req, resp) => {
 }
 
 app.options('*', cors());
+app.get('/', (req, res, next) => {
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            name: 'Agora Token Server',
+            version: '0.1.0'
+        }
+    });
+
+});
 app.get('/ping', nocache, ping)
 app.get('/rtc/:channel/:role/:tokentype/:uid', nocache , generateRTCToken);
 app.get('/rtm/:uid/', nocache , generateRTMToken);
